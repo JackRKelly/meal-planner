@@ -9,12 +9,17 @@ namespace MealPlanner.Controllers
   [ApiController]
   public class MealsController : ControllerBase
   {
-    private readonly MockMealPlanner _mockplanner = new MockMealPlanner();
+    private readonly IMealPlanner _repository;
+
+    public MealsController(IMealPlanner planner)
+    {
+      _repository = planner;
+    }
 
     [HttpGet]
     public ActionResult<IEnumerable<Meal>> GetAllMeals()
     {
-      var mealResult = _mockplanner.GetAllMeals();
+      var mealResult = _repository.GetAllMeals();
 
       return Ok(mealResult);
     }
@@ -23,7 +28,7 @@ namespace MealPlanner.Controllers
     [HttpGet("{id}")]
     public ActionResult<Meal> GetMealById(int id)
     {
-      var mealResult = _mockplanner.GetMealById(id);
+      var mealResult = _repository.GetMealById(id);
 
       return Ok(mealResult);
     }

@@ -1,4 +1,7 @@
+# Client targets
 node_modules
+
+# Server targets
 /build/
 *.suo
 *.user

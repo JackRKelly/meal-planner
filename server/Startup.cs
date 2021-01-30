@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MealPlanner.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,8 +31,10 @@ namespace MealPlanner
       services.AddControllers();
       services.AddSwaggerGen(c =>
       {
-        c.SwaggerDoc("v1", new OpenApiInfo { Title = "_", Version = "v1" });
+        c.SwaggerDoc("v1", new OpenApiInfo { Title = "Meal Planner", Version = "v1" });
       });
+
+      services.AddScoped<IMealPlanner, MockMealPlanner>();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,7 +44,7 @@ namespace MealPlanner
       {
         app.UseDeveloperExceptionPage();
         app.UseSwagger();
-        app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "_ v1"));
+        app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Meal Planner v1"));
       }
 
       app.UseHttpsRedirection();
