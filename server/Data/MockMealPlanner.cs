@@ -3,9 +3,9 @@ using MealPlanner.Models;
 
 namespace MealPlanner.Data
 {
-  public class MockMeal : IMealPlanner
+  public class MockMealPlanner : IMealPlanner
   {
-    public IEnumerable<Meal> GetMeals()
+    public IEnumerable<Meal> GetAllMeals()
     {
       var meals = new List<Meal>
       {

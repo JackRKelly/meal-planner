@@ -5,7 +5,7 @@ namespace MealPlanner.Data
 {
   public interface IMealPlanner
   {
-    IEnumerable<Meal> GetMeals();
+    IEnumerable<Meal> GetAllMeals();
     Meal GetMealById(int id);
   }
 }
