@@ -1,5 +1,5 @@
 {
-  "FilePath": "d:\\Github\\meal-planner\\server\\..csproj",
+  "FilePath": "d:\\Github\\meal-planner\\server\\MealPlanner.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "5.0",
@@ -15600,7 +15600,7 @@
     ],
     "CSharpLanguageVersion": 900
   },
-  "RootNamespace": "_",
+  "RootNamespace": "MealPlanner",
   "Documents": [],
   "SerializationFormat": "0.2"
 }
