@@ -1,7 +1,7 @@
 using MealPlanner.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace MealPlanner.data
+namespace MealPlanner.Data
 {
 
   public class MealPlannerContext : DbContext
