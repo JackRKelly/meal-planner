@@ -27,16 +27,21 @@ namespace MealPlanner.Migrations
                         .UseIdentityByDefaultColumn();
 
                     b.Property<string>("Image")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string[]>("Ingredients")
+                        .IsRequired()
                         .HasColumnType("text[]");
 
                     b.Property<string[]>("Instructions")
+                        .IsRequired()
                         .HasColumnType("text[]");
 
                     b.Property<string>("Name")
-                        .HasColumnType("text");
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
 
                     b.HasKey("Id");
 

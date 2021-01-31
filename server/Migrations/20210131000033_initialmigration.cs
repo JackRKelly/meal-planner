@@ -14,10 +14,10 @@ namespace MealPlanner.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "text", nullable: true),
-                    Image = table.Column<string>(type: "text", nullable: true),
-                    Instructions = table.Column<string[]>(type: "text[]", nullable: true),
-                    Ingredients = table.Column<string[]>(type: "text[]", nullable: true)
+                    Name = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    Image = table.Column<string>(type: "text", nullable: false),
+                    Instructions = table.Column<string[]>(type: "text[]", nullable: false),
+                    Ingredients = table.Column<string[]>(type: "text[]", nullable: false)
                 },
                 constraints: table =>
                 {

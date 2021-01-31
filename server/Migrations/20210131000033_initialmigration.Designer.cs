@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MealPlanner.Migrations
 {
     [DbContext(typeof(MealPlannerContext))]
-    [Migration("20210130235420_initialmigration")]
+    [Migration("20210131000033_initialmigration")]
     partial class initialmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -29,16 +29,21 @@ namespace MealPlanner.Migrations
                         .UseIdentityByDefaultColumn();
 
                     b.Property<string>("Image")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string[]>("Ingredients")
+                        .IsRequired()
                         .HasColumnType("text[]");
 
                     b.Property<string[]>("Instructions")
+                        .IsRequired()
                         .HasColumnType("text[]");
 
                     b.Property<string>("Name")
-                        .HasColumnType("text");
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
 
                     b.HasKey("Id");
 
