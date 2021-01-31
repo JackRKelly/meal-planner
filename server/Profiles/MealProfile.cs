@@ -6,10 +6,10 @@ namespace MealPlanner.Profiles
 {
   public class MealProfile : Profile
   {
-
     public MealProfile()
     {
       CreateMap<Meal, MealReadDto>();
+      CreateMap<MealCreateDto, Meal>();
     }
   }
 }
