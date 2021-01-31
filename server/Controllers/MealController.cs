@@ -94,5 +94,19 @@ namespace MealPlanner.Controllers
       return NoContent();
     }
 
+    [HttpDelete("{id}")]
+    public ActionResult DeleteMeal(int id)
+    {
+      var mealModelFromRepo = _repository.GetMealById(id);
+      if (mealModelFromRepo == null)
+      {
+        return NotFound();
+      }
+
+      _repository.DeleteMeal(mealModelFromRepo);
+      _repository.SaveChanges();
+
+      return NoContent();
+    }
   }
 }

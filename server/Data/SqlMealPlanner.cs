@@ -28,6 +28,15 @@ namespace MealPlanner.Data
       }
     }
 
+    public void DeleteMeal(Meal meal)
+    {
+      if (meal == null)
+      {
+        throw new System.ArgumentNullException(nameof(meal));
+      }
+      _context.Meals.Remove(meal);
+    }
+
     public IEnumerable<Meal> GetAllMeals()
     {
       return _context.Meals.ToList();

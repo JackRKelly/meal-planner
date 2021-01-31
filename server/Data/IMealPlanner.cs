@@ -10,5 +10,6 @@ namespace MealPlanner.Data
     Meal GetMealById(int id);
     void CreateMeal(Meal meal);
     void UpdateMeal(Meal meal);
+    void DeleteMeal(Meal meal);
   }
 }
