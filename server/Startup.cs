@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using MealPlanner.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -36,6 +37,8 @@ namespace MealPlanner
       {
         c.SwaggerDoc("v1", new OpenApiInfo { Title = "Meal Planner", Version = "v1" });
       });
+
+      services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
       services.AddScoped<IMealPlanner, SqlMealPlanner>();
     }
