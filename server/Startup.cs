@@ -43,7 +43,7 @@ namespace MealPlanner
 
       services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-      services.AddScoped<IMealPlanner, SqlMealPlanner>();
+      services.AddScoped<IMealPlannerRepo, MealPlannerRepo>();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

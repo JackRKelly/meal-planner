@@ -3,7 +3,7 @@ using MealPlanner.Models;
 
 namespace MealPlanner.Data
 {
-  public interface IMealPlanner
+  public interface IMealPlannerRepo
   {
     bool SaveChanges();
     IEnumerable<Meal> GetAllMeals();

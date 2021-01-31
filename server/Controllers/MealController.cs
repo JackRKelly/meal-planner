@@ -12,10 +12,10 @@ namespace MealPlanner.Controllers
   [ApiController]
   public class MealController : ControllerBase
   {
-    private readonly IMealPlanner _repository;
+    private readonly IMealPlannerRepo _repository;
     private readonly IMapper _mapper;
 
-    public MealController(IMealPlanner planner, IMapper mapper)
+    public MealController(IMealPlannerRepo planner, IMapper mapper)
     {
       _repository = planner;
       _mapper = mapper;

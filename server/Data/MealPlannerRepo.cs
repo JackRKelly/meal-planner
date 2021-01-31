@@ -4,11 +4,11 @@ using MealPlanner.Models;
 
 namespace MealPlanner.Data
 {
-  public class SqlMealPlanner : IMealPlanner
+  public class MealPlannerRepo : IMealPlannerRepo
   {
     private readonly MealPlannerContext _context;
 
-    public SqlMealPlanner(MealPlannerContext context)
+    public MealPlannerRepo(MealPlannerContext context)
     {
       _context = context;
     }
