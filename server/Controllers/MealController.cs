@@ -28,7 +28,7 @@ namespace MealPlanner.Controllers
       return Ok(_mapper.Map<IEnumerable<MealReadDto>>(mealResult));
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("{id}", Name = "GetMealById")]
     public ActionResult<MealReadDto> GetMealById(int id)
     {
       var mealResult = _repository.GetMealById(id);
@@ -39,6 +39,18 @@ namespace MealPlanner.Controllers
       }
 
       return NotFound();
+    }
+
+    [HttpPost]
+    public ActionResult<MealReadDto> CreateMeal(MealCreateDto mealCreateDto)
+    {
+      var mealModel = _mapper.Map<Meal>(mealCreateDto);
+      _repository.CreateMeal(mealModel);
+      _repository.SaveChanges();
+
+      var mealReadDto = _mapper.Map<MealReadDto>(mealModel);
+
+      return CreatedAtRoute(nameof(GetMealById), new { Id = mealReadDto.Id }, mealReadDto);
     }
   }
 }

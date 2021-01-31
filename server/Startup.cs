@@ -26,7 +26,7 @@ namespace MealPlanner
 
     public IConfiguration Configuration { get; }
 
-    // This method gets called by the runtime. Use this method to add services to the container.
+    //TODO: 3:09 reverse map check comments
     public void ConfigureServices(IServiceCollection services)
     {
       services.AddDbContext<MealPlannerContext>(options =>
@@ -43,7 +43,6 @@ namespace MealPlanner
       services.AddScoped<IMealPlanner, SqlMealPlanner>();
     }
 
-    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
       if (env.IsDevelopment())
