@@ -14,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json.Serialization;
 
 namespace MealPlanner
 {
@@ -26,13 +27,15 @@ namespace MealPlanner
 
     public IConfiguration Configuration { get; }
 
-    //TODO: 3:09 reverse map check comments
     public void ConfigureServices(IServiceCollection services)
     {
       services.AddDbContext<MealPlannerContext>(options =>
             options.UseNpgsql(Configuration.GetConnectionString("MealPlannerConnection")));
 
-      services.AddControllers();
+      services.AddControllers().AddNewtonsoftJson(s =>
+      {
+        s.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+      });
       services.AddSwaggerGen(c =>
       {
         c.SwaggerDoc("v1", new OpenApiInfo { Title = "Meal Planner", Version = "v1" });
