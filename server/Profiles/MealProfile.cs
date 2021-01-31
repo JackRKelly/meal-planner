@@ -10,6 +10,7 @@ namespace MealPlanner.Profiles
     {
       CreateMap<Meal, MealReadDto>();
       CreateMap<MealCreateDto, Meal>();
+      CreateMap<MealUpdateDto, Meal>();
     }
   }
 }

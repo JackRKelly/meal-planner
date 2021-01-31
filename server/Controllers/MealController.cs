@@ -52,5 +52,21 @@ namespace MealPlanner.Controllers
 
       return CreatedAtRoute(nameof(GetMealById), new { Id = mealReadDto.Id }, mealReadDto);
     }
+
+    [HttpPut("{id}")]
+    public ActionResult UpdateMeal(int id, MealUpdateDto mealUpdateDto)
+    {
+      var mealModelFromRepo = _repository.GetMealById(id);
+      if (mealModelFromRepo == null)
+      {
+        return NotFound();
+      }
+
+      _mapper.Map(mealUpdateDto, mealModelFromRepo);
+      _repository.UpdateMeal(mealModelFromRepo);
+      _repository.SaveChanges();
+
+      return NoContent();
+    }
   }
 }

@@ -21,6 +21,7 @@ namespace MealPlanner.Data
       }
 
       _context.Meals.Add(meal);
+
       if (!this.SaveChanges())
       {
         throw new System.ApplicationException();
@@ -44,7 +45,6 @@ namespace MealPlanner.Data
 
     public void UpdateMeal(Meal meal)
     {
-      throw new System.NotImplementedException();
     }
   }
 }
