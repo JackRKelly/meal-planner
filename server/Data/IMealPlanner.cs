@@ -9,5 +9,6 @@ namespace MealPlanner.Data
     IEnumerable<Meal> GetAllMeals();
     Meal GetMealById(int id);
     void CreateMeal(Meal meal);
+    void UpdateMeal(Meal meal);
   }
 }

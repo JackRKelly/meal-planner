@@ -41,5 +41,10 @@ namespace MealPlanner.Data
     {
       return (_context.SaveChanges() >= 0);
     }
+
+    public void UpdateMeal(Meal meal)
+    {
+      throw new System.NotImplementedException();
+    }
   }
 }
