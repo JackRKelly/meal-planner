@@ -3,6 +3,7 @@ using AutoMapper;
 using MealPlanner.Data;
 using MealPlanner.Dtos;
 using MealPlanner.Models;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MealPlanner.Controllers
@@ -68,5 +69,30 @@ namespace MealPlanner.Controllers
 
       return NoContent();
     }
+
+    [HttpPatch("{id}")]
+    public ActionResult PatchMeal(int id, JsonPatchDocument<MealUpdateDto> patchDoc)
+    {
+      var mealModelFromRepo = _repository.GetMealById(id);
+      if (mealModelFromRepo == null)
+      {
+        return NotFound();
+      }
+
+      var mealToPatch = _mapper.Map<MealUpdateDto>(mealModelFromRepo);
+      patchDoc.ApplyTo(mealToPatch, ModelState);
+
+      if (!TryValidateModel(mealToPatch))
+      {
+        return ValidationProblem(ModelState);
+      }
+
+      _mapper.Map(mealToPatch, mealModelFromRepo);
+      _repository.UpdateMeal(mealModelFromRepo);
+      _repository.SaveChanges();
+
+      return NoContent();
+    }
+
   }
 }
