@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MealPlanner.data;
 using MealPlanner.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -38,7 +37,7 @@ namespace MealPlanner
         c.SwaggerDoc("v1", new OpenApiInfo { Title = "Meal Planner", Version = "v1" });
       });
 
-      services.AddScoped<IMealPlanner, MockMealPlanner>();
+      services.AddScoped<IMealPlanner, SqlMealPlanner>();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
